@@ -3,7 +3,7 @@ package main.project.view;
 import javax.swing.*;
 import java.awt.*;
 
-// TODO: 2019/7/6 this.addMouseListener
+
 
 public abstract class Desktop extends JPanel{
 

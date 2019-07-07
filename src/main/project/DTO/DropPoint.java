@@ -1,4 +1,4 @@
 package main.project.DTO;
 
-public abstract class DropPoint {
+public interface DropPoint {
 }
