@@ -1,5 +1,5 @@
 package main.project.controller;
 
-public abstract class Player {
+public abstract class HumanPlayer extends Player {
     public abstract Object interactive();
 }
