@@ -1,5 +1,7 @@
 package main.project.view.gui;
 
+import main.project.view.five.Desktop;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,8 +9,12 @@ public class Gui extends JFrame {
     private ImageIcon map;				//棋盘背景位图
     private ImageIcon blackchess;		//黑子位图
     private ImageIcon whitechess;		//白子位图
+    private Desktop desktop;
     private Rectangle rectangle;
     private String title;
+
+    private JPanel east;
+    private JPanel west;
 
     private JMenuBar menubar;
     private JMenu[] menu={new JMenu("棋类"),new JMenu("设置"),new JMenu("帮助")};
@@ -31,7 +37,7 @@ public class Gui extends JFrame {
         // map=new ImageIcon(getClass().getResource("resource\\bg.jpg"));
         // blackchess=new ImageIcon(getClass().getResource("resource\\blackchess.gif"));
         // whitechess=new ImageIcon(getClass().getResource("resource\\whitechess.gif"));
-        // cp=new ChessPanel(map,blackchess,whitechess);
+
 
         menubar=new JMenuBar();
         menuItemChess[0].setActionCommand("Five");
@@ -57,7 +63,12 @@ public class Gui extends JFrame {
 
         Container container = getContentPane();
 
-        // p.add(cp, "Center");
+        desktop =new Desktop();
+        east = new JPanel();
+        west = new JPanel();
+        container.add(east, "East");
+        container.add(west, "West");
+        container.add(desktop, "Center");
     }
 
     public static void main(String[] args) {
