@@ -1,9 +1,11 @@
 package main.project.view.gui;
 
-import main.project.view.five.Desktop;
+import main.project.five.view.Desktop;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Gui extends JFrame {
     private ImageIcon map;				//棋盘背景位图
@@ -22,6 +24,8 @@ public class Gui extends JFrame {
     private JMenuItem[] menuItemChess={new JMenuItem("五子棋")};
     private JMenuItem[] menuItemSet={new JMenuItem("重新开始")};
     private JMenuItem[] menuItemHelp={new JMenuItem("规则"),new JMenuItem("关于")};
+
+    private MenuItemClicked menuItemClicked = new MenuItemClicked();
 
     public Gui(){
         title = "Five";
@@ -43,17 +47,20 @@ public class Gui extends JFrame {
         menuItemChess[0].setActionCommand("Five");
         for(int i=0; i<menuItemChess.length; i++) {
             menu[0].add(menuItemChess[i]);
+            menuItemChess[i].addActionListener(menuItemClicked);
         }
 
         menuItemSet[0].setActionCommand("Restart");
         for(int i=0; i<menuItemSet.length; i++) {
             menu[1].add(menuItemSet[i]);
+            menuItemSet[i].addActionListener(menuItemClicked);
         }
 
         menuItemHelp[0].setActionCommand("Rule");
         menuItemHelp[1].setActionCommand("About");
         for(int i=0; i<menuItemHelp.length; i++) {
             menu[2].add(menuItemHelp[i]);
+            menuItemHelp[i].addActionListener(menuItemClicked);
         }
 
         for (int i=0; i<menu.length; i++) {
@@ -71,7 +78,28 @@ public class Gui extends JFrame {
         container.add(desktop, "Center");
     }
 
-    public static void main(String[] args) {
-        new Gui();
+    class MenuItemClicked implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JMenuItem target = (JMenuItem)e.getSource();
+            String actionCommand = target.getActionCommand();
+            if(actionCommand.equals("Five")) {
+
+            } else if(actionCommand.equals("Restart")) {
+
+            } else if(actionCommand.equals("Rule")) {
+                JOptionPane.showConfirmDialog(null,
+                        "五子棋"
+                        ,"规则",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE);
+
+            } else if(actionCommand.equals("About")) {
+                JOptionPane.showConfirmDialog(null,
+                        "Author:Ponecrazy<394129161@163.com>\n" +
+                                 "Github:https://github.com/394129161/Chess\n"
+                        ,"关于",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        }
     }
+
 }
