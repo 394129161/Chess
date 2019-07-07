@@ -1,7 +1,9 @@
 package main.project.service;
 
+import main.project.controller.Player;
+
 public abstract class Referee {
-    public abstract boolean check();
-    public abstract void drop();
-    public abstract boolean judge();
+    public abstract void execute();
+    public abstract Player getPlayer();
+
 }

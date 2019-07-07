@@ -6,8 +6,8 @@ public abstract class Situation {
 
     private Object composition;
 
-    public abstract Integer getComposition(Point point);
+    public abstract int getComposition(Point point);
 
-    public abstract void setComposition(Point point, int val);
+    public abstract void setComposition(Point point, int side);
 
 }

@@ -3,8 +3,8 @@ package main.project.controller;
 import java.awt.*;
 
 public abstract class OnlinePlayer extends Player implements Online {
+    public boolean ctrlFlag = false;
     @Override
-    public Object interactive(Point mousePos) {
-        return null;
+    public void interactive(Point mousePos) {
     }
 }

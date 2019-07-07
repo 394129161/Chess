@@ -15,6 +15,9 @@ public class ChessResource {
     private int mapHeight;
     private int mapWidth;
     private int N;
+    public final int BLACK_ONE = -1;				//-1表黑子
+    public final int WHITE_ONE = 1;					//1表白子
+    public final int NONE_ONE = 0;					//0表无子
 
     private ChessResource() {
         this.map = new ImageIcon("src\\main\\project\\five\\resource\\bg.jpg");

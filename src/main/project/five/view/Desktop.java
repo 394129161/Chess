@@ -1,12 +1,15 @@
 package main.project.five.view;
 
+import main.project.controller.Player;
 import main.project.five.DTO.DropPoint;
 import main.project.five.model.Situation;
+import main.project.five.service.Referee;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 // import main.project.view.five.Chess;
 
@@ -17,6 +20,9 @@ public class Desktop extends main.project.view.Desktop {
 
     ChessResource chess = ChessResource.getInstance();
 
+    private Referee referee;
+    private Player player;
+
     private Point paintPoint;
     private Point mousePos;
     private DropPoint dropPoint;
@@ -25,13 +31,10 @@ public class Desktop extends main.project.view.Desktop {
     private int h;							//棋盘长
     private int w;							//棋盘宽
 
-    public final int BLACK_ONE;					//-1表黑子
-    public final int WHITE_ONE;					//1表白子
-    public final int NONE_ONE;					//0表无子
 
     private Situation situation;
 
-    public Desktop() {
+    public Desktop(ArrayList<Player> playerList) {
         dropPoint = DropPoint.getDropPoint();
         paintPoint = new Point();
         mousePos = new Point();
@@ -47,12 +50,11 @@ public class Desktop extends main.project.view.Desktop {
         h=chess.getMapHeight();
         w=chess.getMapWidth();
 
-        BLACK_ONE = -1;
-        WHITE_ONE = 1;
-        NONE_ONE = 0;
+
 
         situation = Situation.getInstance();
-        // repaint();
+        referee = new Referee(playerList);
+
     }
 
     @Override
@@ -84,10 +86,10 @@ public class Desktop extends main.project.view.Desktop {
         for(i=0;i<N;i++)
             for(j=0;j<N;j++){
                 paintPoint.setLocation(i, j);
-                if(situation.getComposition(paintPoint)==BLACK_ONE){
+                if(situation.getComposition(paintPoint)==chess.BLACK_ONE){
                     blackchess.paintIcon(this,g,w/N*i,h/N*j);
                 }
-                else if(situation.getComposition(paintPoint)==WHITE_ONE){
+                else if(situation.getComposition(paintPoint)==chess.WHITE_ONE){
                     whitechess.paintIcon(this,g,w/N*i,h/N*j);
                 }
             }
@@ -99,7 +101,10 @@ public class Desktop extends main.project.view.Desktop {
         public void mouseClicked(MouseEvent e) {
             // e.getX(),e.getY()
             mousePos.setLocation(e.getX(), e.getY());
-
+            player = referee.getPlayer();
+            player.interactive(mousePos);
+            referee.execute();
+            repaint();
         }
     }
 

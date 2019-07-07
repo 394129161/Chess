@@ -1,11 +1,13 @@
-package main.project.view.gui;
+package main.project.gui;
 
+import main.project.controller.Player;
 import main.project.five.view.Desktop;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Gui extends JFrame {
     private ImageIcon map;				//棋盘背景位图
@@ -14,6 +16,7 @@ public class Gui extends JFrame {
     private Desktop desktop;
     private Rectangle rectangle;
     private String title;
+
 
     private JPanel east;
     private JPanel west;
@@ -27,15 +30,18 @@ public class Gui extends JFrame {
 
     private MenuItemClicked menuItemClicked = new MenuItemClicked();
 
-    public Gui(){
+    public Gui(ArrayList<Player> playerList){
         title = "Five";
         rectangle = new Rectangle(400, 200, 450, 500);
         setTitle(title);
         setBounds(rectangle);
         setResizable(false);
+        this.desktop = new Desktop(playerList);
         init();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+
+
     }
     private void init() {
         // map=new ImageIcon(getClass().getResource("resource\\bg.jpg"));
@@ -70,7 +76,7 @@ public class Gui extends JFrame {
 
         Container container = getContentPane();
 
-        desktop =new Desktop();
+
         east = new JPanel();
         west = new JPanel();
         container.add(east, "East");

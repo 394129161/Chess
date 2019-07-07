@@ -19,12 +19,12 @@ public class Situation extends main.project.model.Situation {
 
 
     @Override
-    public Integer getComposition(Point point) {
+    public int getComposition(Point point) {
         return this.composition[(int)point.getX()][(int)point.getY()];
     }
 
     @Override
-    public void setComposition(Point point, int val) {
-        this.composition[(int)point.getX()][(int)point.getY()] = val;
+    public void setComposition(Point point, int side) {
+        this.composition[(int)point.getX()][(int)point.getY()] = side;
     }
 }
