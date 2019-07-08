@@ -2,6 +2,7 @@ package main.project.gui;
 
 import main.project.controller.Player;
 import main.project.five.utils.Tools;
+import main.project.five.view.ChessResource;
 import main.project.five.view.Desktop;
 
 import javax.swing.*;
@@ -9,18 +10,26 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/**
+ * GUI.
+ * 初步实现棋类(五子棋)单窗口GUI。
+ * 对于之后的多棋类和不同种类Player的实现需要重新设计构建GUI
+ * @author Ponecrazy
+ * @version 1.0
+ * @since 1.0
+ */
 public class Gui extends JFrame {
-    private ImageIcon map;				//棋盘背景位图
-    private ImageIcon blackchess;		//黑子位图
-    private ImageIcon whitechess;		//白子位图
+    /** 下棋部分的窗口组件 */
     private Desktop desktop;
+    /** GUI窗口的设定 */
     private Rectangle rectangle;
+    /** GUI窗口标题 */
     private String title;
 
 
     private JPanel east;
     private JPanel west;
+
 
     private JMenuBar menubar;
     private JMenu[] menu={new JMenu("棋类"),new JMenu("设置"),new JMenu("帮助")};
@@ -31,8 +40,14 @@ public class Gui extends JFrame {
 
     private MenuItemClicked menuItemClicked = new MenuItemClicked();
 
+    /**
+     * 构建窗口并初始化GUI.
+     * @param playerList
+     *        玩家列表
+     */
     public Gui(ArrayList<Player> playerList){
-        title = "Five";
+
+        title = ChessResource.getInstance().getTitle();// 需要重新构造
         rectangle = new Rectangle(400, 200, 450, 500);
         setTitle(title);
         setBounds(rectangle);
@@ -44,6 +59,11 @@ public class Gui extends JFrame {
 
 
     }
+
+    /**
+     * 初始化GUI.
+     *
+     */
     private void init() {
         // map=new ImageIcon(getClass().getResource("resource\\bg.jpg"));
         // blackchess=new ImageIcon(getClass().getResource("resource\\blackchess.gif"));
@@ -85,6 +105,10 @@ public class Gui extends JFrame {
         container.add(desktop, "Center");
     }
 
+    /**
+     * 菜单项监听.
+     * 后期需要重构
+     */
     class MenuItemClicked implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
