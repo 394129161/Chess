@@ -20,8 +20,5 @@ public class Tools {
         dropPoint.setLocation((int)mousePos.getX()/unitLength, (int)mousePos.getY()/unitLength);
     }
 
-    public static void reset() {
-        referee.init();
-        situation.init();
-    }
+
 }

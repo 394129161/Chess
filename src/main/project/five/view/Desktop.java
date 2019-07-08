@@ -54,9 +54,7 @@ public class Desktop extends main.project.view.Desktop {
 
 
         situation = Situation.getInstance();
-        referee = Referee.getInstance();
-        referee.playerMeeting(playerList);
-        referee.init();
+        referee = new Referee(playerList);
         winner = null;
 
     }
@@ -123,5 +121,11 @@ public class Desktop extends main.project.view.Desktop {
 
         }
     }
+
+    public void reset() {
+        referee.reset();
+        repaint();
+    }
+
 
 }

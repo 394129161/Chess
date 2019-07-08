@@ -28,11 +28,19 @@ public class Referee extends main.project.service.Referee {
 
     private DropPoint dropPoint = DropPoint.getDropPoint();
 
-    public void playerMeeting(ArrayList<Player> playerList) {
-        this.playerList = playerList;
+    public Referee(ArrayList<Player> playerList) {
+        this.init(playerList);
+
     }
 
-    public void init() {
+    public void reset() {
+        this.init(this.playerList);
+        situation.init();
+    }
+
+    private void init(ArrayList<Player> playerList) {
+        this.playerList = playerList;
+
         // 初始化，黑棋先下
         for (int i=0; i<playerList.size(); i++) {
             if (playerList.get(i).getSide() == chessResource.BLACK_ONE) {
@@ -93,6 +101,8 @@ public class Referee extends main.project.service.Referee {
     private void wined() {
         situation.setWinner(this.getPlayer());
     }
+
+    public void reSet(){}
 
     private boolean countNum(int ex, int ey) {
         int num = 1;

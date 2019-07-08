@@ -93,8 +93,7 @@ public class Gui extends JFrame {
             if(actionCommand.equals("Five")) {
 
             } else if(actionCommand.equals("Restart")) {
-                Tools.reset();
-                repaint();
+                desktop.reset();
             } else if(actionCommand.equals("Rule")) {
                 JOptionPane.showConfirmDialog(null,
                         "五子棋"
