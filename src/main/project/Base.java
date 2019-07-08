@@ -8,7 +8,7 @@ import main.project.gui.Gui;
 import java.util.ArrayList;
 
 public class Base {
-    public static void main(String[] args) {
+    public Base() {
         ArrayList<Player> playerList = new ArrayList<Player>();
         ChessResource chessResource = ChessResource.getInstance();
         playerList.add(new HumanPlayer(chessResource.BLACK_ONE));

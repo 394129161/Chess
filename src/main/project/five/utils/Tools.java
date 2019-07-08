@@ -15,4 +15,6 @@ public class Tools {
         unitLength = chessResource.getMapHeight()/chessResource.getN();
         dropPoint.setLocation((int)mousePos.getX()/unitLength, (int)mousePos.getY()/unitLength);
     }
+
+
 }

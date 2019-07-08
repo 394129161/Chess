@@ -22,6 +22,7 @@ public class Desktop extends main.project.view.Desktop {
 
     private Referee referee;
     private Player player;
+    private Player winner;
 
     private Point paintPoint;
     private Point mousePos;
@@ -54,6 +55,7 @@ public class Desktop extends main.project.view.Desktop {
 
         situation = Situation.getInstance();
         referee = new Referee(playerList);
+        winner = null;
 
     }
 
@@ -104,7 +106,19 @@ public class Desktop extends main.project.view.Desktop {
             player = referee.getPlayer();
             player.interactive(mousePos);
             referee.execute();
+            winner = situation.getWinner();
             repaint();
+
+            if (winner != null) {
+                String winDialog;
+                if(winner.getSide() == chess.BLACK_ONE) {
+                    winDialog = "黑棋赢了";
+                } else {
+                    winDialog = "白棋赢了";
+                }
+                JOptionPane.showMessageDialog(null,winDialog);
+            }
+
         }
     }
 
