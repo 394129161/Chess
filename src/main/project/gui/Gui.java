@@ -1,6 +1,7 @@
 package main.project.gui;
 
 import main.project.controller.Player;
+import main.project.five.utils.Tools;
 import main.project.five.view.Desktop;
 
 import javax.swing.*;
@@ -92,7 +93,8 @@ public class Gui extends JFrame {
             if(actionCommand.equals("Five")) {
 
             } else if(actionCommand.equals("Restart")) {
-
+                Tools.reset();
+                repaint();
             } else if(actionCommand.equals("Rule")) {
                 JOptionPane.showConfirmDialog(null,
                         "五子棋"

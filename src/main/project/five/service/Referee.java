@@ -9,6 +9,15 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Referee extends main.project.service.Referee {
+    private static Referee referee = new Referee();
+
+    private Referee() {}
+
+    public static Referee getInstance() {
+        return referee;
+    }
+
+
     private ArrayList<Player> playerList;
 
     private ChessResource chessResource = ChessResource.getInstance();
@@ -19,9 +28,11 @@ public class Referee extends main.project.service.Referee {
 
     private DropPoint dropPoint = DropPoint.getDropPoint();
 
-    public Referee(ArrayList<Player> playerList) {
+    public void playerMeeting(ArrayList<Player> playerList) {
         this.playerList = playerList;
+    }
 
+    public void init() {
         // 初始化，黑棋先下
         for (int i=0; i<playerList.size(); i++) {
             if (playerList.get(i).getSide() == chessResource.BLACK_ONE) {
@@ -29,7 +40,6 @@ public class Referee extends main.project.service.Referee {
                 break;
             }
         }
-
     }
 
     private boolean check() {
@@ -83,8 +93,6 @@ public class Referee extends main.project.service.Referee {
     private void wined() {
         situation.setWinner(this.getPlayer());
     }
-
-    public void reSet(){}
 
     private boolean countNum(int ex, int ey) {
         int num = 1;

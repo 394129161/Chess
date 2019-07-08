@@ -17,10 +17,13 @@ public class Situation extends main.project.model.Situation {
 
     private Situation() {
         this.N = 15;
+        this.init();
+    }
+
+    public void init() {
         this.composition = new int[N][N];
         this.winner = null;
     }
-
 
     @Override
     public int getComposition(Point point) {
